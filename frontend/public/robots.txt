@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block internal build/tooling paths if exposed by any proxy
+Disallow: /node_modules/
+Disallow: /server/
+Disallow: /.git/

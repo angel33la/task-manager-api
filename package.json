@@ -1,0 +1,31 @@
+{
+  "name": "task-manager-api",
+  "private": true,
+  "scripts": {
+    "start": "npm run start:full",
+    "dev": "npm run dev:full",
+    "stop:dev": "pkill -9 -f 'vite|server/standalone.cjs' || true",
+    "dev:api": "PORT=4000 node server/standalone.cjs",
+    "dev:client": "vite",
+    "dev:full": "npm run stop:dev && concurrently -k -n API,WEB -c green,cyan \"npm run dev:api\" \"npm run dev:client\"",
+    "build:client": "vite build",
+    "preview:client": "vite preview --port 4173",
+    "start:api": "NODE_ENV=production PORT=4000 node server/standalone.cjs",
+    "start:full": "npm run build:client && npm run start:api",
+    "test": "echo \"No test runner configured\" && exit 0",
+    "test:smoke": "node scripts/smoke-check.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^4.21.2",
+    "mongoose": "^9.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "vite": "^5.4.11"
+  }
+}
